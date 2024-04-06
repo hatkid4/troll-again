@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Location Tracker</title>
+<script>
+window.onload = function() {
+    document.getElementById("clickMe").onclick = function() {
+        getLocation();
+    };
+};
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var accuracy = position.coords.accuracy;
+
+    var locationInfo = "Latitude: " + latitude + "<br>Longitude: " + longitude + "<br>Accuracy: " + accuracy + " meters";
+    
+    
+    document.getElementById("locationInfo").innerHTML = locationInfo;
+}
+</script>
+</head>
+<body>
+
+<h1>Click the button below to get your location:</h1>
+<button id="clickMe">Click me for rizz</button>
+
+<div id="locationInfo"></div>
+
+</body>
+</html>
